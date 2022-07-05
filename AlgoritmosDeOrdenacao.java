@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class AlgoritmosDeOrdenacao {
     public static void main(String[] args) {
 
-        int[] zap = new int[50000];
+        // int[] zap = new int[50000];
         // int[] zap = new int[75000];
-        // int[] zap = new int[100000];
+        int[] zap = new int[100000];
         // int[] zap = new int[200000];
         // int[] zap = new int[500000];
         // int[] zap = new int[1000000];
@@ -24,12 +24,12 @@ public class AlgoritmosDeOrdenacao {
 
         Instant momentoInicial = Instant.now();
 
-        // arraySort(zap);
+        arraySort(zap);
         // aSort(zap, 0, zap.length-1);
         // bubble(zap);
         // insertion(zap);
         // selection(zap);
-        quickSort(zap, 0, zap.length - 1);
+        // quickSort(zap, 0, zap.length - 1);
         // merge(zap, 0, zap.length);
 
         Instant momentoFinal = Instant.now();
@@ -39,11 +39,10 @@ public class AlgoritmosDeOrdenacao {
     }
 
     // ARRAY SORT
-    /*
-     * static void arraySort(int[] vetor) {
-     * Arrays.sort(vetor);
-     * }
-     */
+
+    static void arraySort(int[] vetor) {
+        Arrays.sort(vetor);
+    }
 
     // ARRAY SORT
     static void aSort(int[] vetor, int inicio, int termino) {
@@ -116,23 +115,19 @@ public class AlgoritmosDeOrdenacao {
     }
 
     /* QUICK SORT */
-    static int partition(int vetor[], int low, int high) {
+    static int partition1(int vetor[], int low, int high) {
         int pivot = vetor[high];
-        int i = (low - 1); // index of smaller element
+        int i = (low - 1);
         for (int j = low; j < high; j++) {
-            // If current element is smaller than or
-            // equal to pivot
             if (vetor[j] <= pivot) {
                 i++;
 
-                // swap vetor[i] and vetor[j]
                 int temp = vetor[i];
                 vetor[i] = vetor[j];
                 vetor[j] = temp;
             }
         }
 
-        // swap vetor[i+1] and vetor[high] (or pivot)
         int temp = vetor[i + 1];
         vetor[i + 1] = vetor[high];
         vetor[high] = temp;
@@ -142,14 +137,14 @@ public class AlgoritmosDeOrdenacao {
 
     static void quickSort(int vetor[], int low, int high) {
         if (low < high) {
-            int pi = partition(vetor, low, high);
+            int pi = partition1(vetor, low, high);
 
-            quickSort(vetor, low, pi - 1);
+            quickSort(vetor, low, pi);
             quickSort(vetor, pi + 1, high);
         }
     }
 
-    static void printArray(int vetor[]) {
+    static void printArray1(int vetor[]) {
         int n = vetor.length;
         for (int i = 0; i < n; ++i)
             System.out.print(vetor[i] + " ");
@@ -202,6 +197,7 @@ public class AlgoritmosDeOrdenacao {
 
     }
     /* /////////// */
+
 }
 
 // array sort OK
@@ -238,6 +234,18 @@ public class AlgoritmosDeOrdenacao {
  * 
  * Funciona mais eficientemente de forma crescente. No geral, ele faz o seu
  * trabalho muito bem.
+ * 
+ * Organizou 50000 elementos em 17 milissegundos;
+ * Organizou 50000 elementos em 12 milissegundos;
+ * Organizou 50000 elementos em 10 milissegundos;
+ * 
+ * Organizou 75000 elementos em 15 milissegundos;
+ * Organizou 75000 elementos em 11 milissegundos;
+ * Organizou 75000 elementos em 13 milissegundos;
+ * 
+ * Organizou 100000 elementos em 18 milissegundos;
+ * Organizou 100000 elementos em 13 milissegundos;
+ * Organizou 100000 elementos em 12 milissegundos;
  * 
  */
 
@@ -363,14 +371,14 @@ public class AlgoritmosDeOrdenacao {
 // QUICK SORT - FUNCIONAMENTO
 /*
  * Crescente
- * Organizou 100000 elementos em  milissegundos;
- * Organizou 200000 elementos em  milissegundos;
- * Organizou 500000 elementos em  milissegundos;
+ * Organizou 100000 elementos em milissegundos;
+ * Organizou 200000 elementos em milissegundos;
+ * Organizou 500000 elementos em milissegundos;
  * 
  * Decrescente
- * Organizou 100000 elementos em  milissegundos;
- * Organizou 200000 elementos em  milissegundos;
- * Organizou 500000 elementos em  milissegundos;
+ * Organizou 100000 elementos em milissegundos;
+ * Organizou 200000 elementos em milissegundos;
+ * Organizou 500000 elementos em milissegundos;
  * 
  * Aleatório
  * Organizou 100000 elementos em 64 milissegundos;
@@ -404,5 +412,15 @@ public class AlgoritmosDeOrdenacao {
  * Organizou 100000 elementos em 19 milissegundos;
  * Organizou 100000 elementos em 19 milissegundos;
  * Organizou 100000 elementos em 20 milissegundos.
+ * 
+ * Crescente
+ * Organizou 100000 elementos em 15 milissegundos;
+ * Organizou 200000 elementos em 22 milissegundos;
+ * Organizou 500000 elementos em 57 milissegundos.
+ * 
+ * Decrescente
+ * Organizou 100000 elementos em 16 milissegundos;
+ * Organizou 200000 elementos em 29 milissegundos;
+ * Organizou 500000 elementos em 41 milissegundos.
  * 
  */
